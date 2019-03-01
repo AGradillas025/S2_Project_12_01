@@ -24,14 +24,18 @@ for (var i = 0; i <= 3; i++) {
     // The item is the current value from the item array
     cartHTML += "<tr> <td><img src='tc_" + item[i] + ".png' alt='item' /></td>";
     // Displays the description, price, and quantity order of the item where the description would be the current value from the itemDescription display
-    cartHTML += "<td>" + itemDescription[i] + "</td> <td>$price</td> <td>quantity</td>";
+    cartHTML += "<td>" + itemDescription[i] + "</td> <td>$" + itemPrice[i] + "</td> <td>" + itemQty[i] + "</td>";
     // A variable named itemCost would be declared equal to the price value multiplied by the quantity value
-    var itemCost = $price * quantity;
+    var itemCost = itemPrice[i] * itemQty[i];
     // Displays the cost for the item(s) ordered, completing the table row
-    cartHTML += "<td>" + itemCost[i] + "</td></tr>";
-    // This will keep arunning total of the total cost of the customer order
+    cartHTML += "<td>$" + itemCost + "</td></tr>";
+    // This will keep a running total of the total cost of the customer order
     orderTotal = orderTotal + itemCost;
 
 }
 
+// This will complete the shopping cart table by adding the subtotal at the bottom of the table
+cartHTML += "<tr> <td colspan='4'>Subtotal</td> <td>$" + orderTotal + "</td> </tr> </table>";
+
+// This will allow all the table content to appear on the website
 document.getElementById("cart").innerHTML = cartHTML;
